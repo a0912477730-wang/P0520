@@ -1,0 +1,519 @@
+<!doctype html>
+<html><head><meta charset='utf-8'><title>Preview</title><style>body{font-family:system-ui;padding:16px}
+iframe, img{max-width:100%}</style></head><body><!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>長田車輛燃料費管理系統 — AI 自動化新紀元</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-dark: #121110;
+  --bg-card: #1C1A18;
+  --border-color: rgba(200, 191, 176, 0.15);
+  --text-main: #F4F1EC;
+  --text-muted: #A69F95;
+  --accent: #93A98C;
+  --accent-glow: rgba(147, 169, 140, 0.2);
+  --red: #C86B5D;
+  --font-display: 'Plus Jakarta Sans', "Microsoft JhengHei", sans-serif;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-display);
+  overflow-x: hidden;
+  letter-spacing: 0.03em;
+}
+
+/* 一眼高階：毛玻璃導覽列 */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 4%;
+  background: rgba(18, 17, 16, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+}
+.nav-brand { font-weight: 800; font-size: 0.9rem; letter-spacing: 0.2em; color: var(--text-main); }
+.nav-links { display: flex; gap: 2.5rem; }
+.nav-links a { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.nav-links a:hover { color: var(--accent); }
+
+/* HERO：數位幾何與流動空氣感 */
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  min-height: 90vh;
+  padding: 0 4%;
+  align-items: center;
+  gap: 4rem;
+}
+.hero-left { display: flex; flex-direction: column; justify-content: center; }
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.hero-tag::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
+.hero-title { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 2rem; color: #FFF; }
+.hero-title em { font-style: normal; color: var(--accent); position: relative; }
+.hero-sub { font-size: 0.95rem; line-height: 1.8; color: var(--text-muted); max-width: 520px; margin-bottom: 2.5rem; }
+.hero-stats { display: flex; gap: 4rem; border-top: 1px solid var(--border-color); padding-top: 2rem; }
+.stat-num { font-size: 2.5rem; font-weight: 800; color: #FFF; display: block; line-height: 1; margin-bottom: 0.5rem; }
+.stat-label { font-size: 0.7rem; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase; }
+
+/* 模擬上傳與數位面板互動區 */
+.hero-right { display: flex; justify-content: center; align-items: center; }
+.interactive-panel {
+  width: 100%;
+  max-width: 440px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  transition: border-color 0.4s, box-shadow 0.4s;
+}
+.interactive-panel:hover {
+  border-color: rgba(147, 169, 140, 0.4);
+  box-shadow: 0 30px 60px rgba(147, 169, 140, 0.05);
+}
+.upload-zone {
+  border: 2px dashed var(--border-color);
+  border-radius: 16px;
+  padding: 3rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+}
+.upload-zone:hover { background: rgba(255,255,255,0.02); border-color: var(--accent); }
+.upload-icon { font-size: 2rem; margin-bottom: 1rem; opacity: 0.8; }
+.upload-text { font-size: 0.8rem; color: var(--text-muted); }
+.upload-text strong { color: var(--text-main); display: block; margin-bottom: 0.3rem; }
+
+/* 全新大流行：BENTO GRID SECTION */
+section { padding: 7rem 4%; }
+.section-header { margin-bottom: 4rem; max-width: 600px; }
+.sec-tag { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: block; }
+.sec-title { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800; color: #FFF; line-height: 1.2; }
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.bento-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.bento-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.2);
+}
+.bento-card.col-2 { grid-column: span 2; }
+.bento-card.row-2 { grid-row: span 2; display: flex; flex-direction: column; justify-content: space-between; }
+
+.card-icon { font-size: 1.8rem; margin-bottom: 1.5rem; display: inline-block; }
+.bento-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.8rem; color: #FFF; }
+.bento-card p { font-size: 0.85rem; line-height: 1.7; color: var(--text-muted); }
+
+/* 擬真系統預覽 */
+.mock-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; font-size: 0.75rem; }
+.mock-table th { text-align: left; padding: 0.6rem; color: var(--text-muted); border-bottom: 1px solid var(--border-color); }
+.mock-table td { padding: 0.6rem; border-bottom: 1px solid rgba(200,191,176,0.05); }
+.status-badge { background: rgba(147,169,140,0.15); color: var(--accent); padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.7rem; }
+
+/* 互動功能：前後對比切換器 */
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.toggle-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 0.6rem 2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.toggle-btn.active {
+  background: var(--text-main);
+  color: var(--bg-dark);
+  border-color: var(--text-main);
+}
+.compare-view-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 3rem;
+  min-height: 300px;
+}
+.compare-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  list-style: none;
+}
+.compare-list li {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.compare-list .icon-negative { color: var(--red); font-weight: bold; }
+.compare-list .icon-positive { color: var(--accent); font-weight: bold; }
+
+/* 流程樣式升級 */
+.flow-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.flow-node { position: relative; }
+.flow-node::after {
+  content: '→';
+  position: absolute;
+  top: 2.5rem;
+  right: -0.8rem;
+  color: var(--border-color);
+  font-size: 1.2rem;
+}
+.flow-node:last-child::after { display: none; }
+.flow-num { font-size: 3rem; font-weight: 800; color: rgba(255,255,255,0.03); line-height: 1; margin-bottom: 0.5rem; }
+
+/* 效益數據大視覺 */
+.metrics-section { background: #171614; }
+.metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+.metric-card { padding: 2rem; }
+.metric-val { font-size: 4rem; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 0.5rem; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+/* 結尾呼籲 */
+.cta-section {
+  text-align: center;
+  padding: 10rem 4%;
+  background: radial-gradient(circle at center, rgba(147, 169, 140, 0.08) 0%, transparent 70%);
+}
+.cta-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; margin-bottom: 1.5rem; }
+.cta-btn {
+  display: inline-block;
+  background: var(--text-main);
+  color: var(--bg-dark);
+  padding: 1rem 3rem;
+  border-radius: 40px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255,255,255,0.15);
+}
+
+footer {
+  padding: 2rem 4%;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* 滾動動畫優化 */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 968px) {
+  .hero, .bento-grid, .flow-container, .metrics-grid, .compare-list { grid-template-columns: 1fr; }
+  .bento-card.col-2 { grid-column: span 1; }
+  .flow-node::after { display: none; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">長田實業 · OSADA</span>
+  <div class="nav-links">
+    <a href="#about">系統概述</a>
+    <a href="#features">功能矩陣</a>
+    <a href="#compare">導入效益</a>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">AI Competition Entry · 2026</div>
+    <h1 class="hero-title">車輛燃料費<br><em>智能管理</em>系統</h1>
+    <p class="hero-sub">以 AI 為核心的自動化架構，無縫對接會計系統分類帳。將繁瑣的車牌辨識、起迄里程對帳與費用排除，由 2 小時手動核算極致壓縮至 5 分鐘。</p>
+    <div class="hero-stats">
+      <div><span class="stat-num counter" data-target="11">0</span><span class="stat-label">現役管理車輛</span></div>
+      <div><span class="stat-num">5 min</span><span class="stat-label">每月自動處理</span></div>
+      <div><span class="stat-num">0 元</span><span class="stat-label">外購授權費用</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- 互動操作演示盒 -->
+    <div class="interactive-panel">
+      <div class="upload-zone" id="uploadZone">
+        <div class="upload-icon">📄</div>
+        <div class="upload-text">
+          <strong>拖曳會計明細帳至此</strong>
+          支持 .xlsx 格式直接解析
+        </div>
+      </div>
+      <div id="uploadStatus" style="margin-top:1.5rem; font-size:0.75rem; color:var(--accent); display:none; text-align:center;">
+        ⚡ 偵測到分類帳檔案！AI 正在自動識別 11 台公務車起迄里程...
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENTO GRID FEATURES -->
+<section id="about">
+  <div class="section-header">
+    <span class="sec-tag">System Architecture</span>
+    <h2 class="sec-title">重新想像公務車維運。全新功能便當盒佈局。</h2>
+  </div>
+  
+  <div class="bento-grid">
+    <!-- 卡片 1 (大卡) -->
+    <div class="bento-card col-2 reveal">
+      <span class="card-icon">📤</span>
+      <h3>會計系統直對直匯入</h3>
+      <p>直接讀取燃料費與修繕費明細分類帳 Excel，演算法智能過濾摘要欄位，自動提取各車牌對應的起迄里程。原先需要人工逐筆排除的業務同仁個人油資，現在系統一鍵精準自動剔除。</p>
+      
+      <table class="mock-table">
+        <thead>
+          <tr><th>公務車牌</th><th>當月行駛里程</th><th>核算油資</th><th>狀態</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1969-TM</td><td>2,254 KM</td><td>$8,000</td><td><span class="status-badge">解析完成</span></td></tr>
+          <tr><td>AKU-6083</td><td>2,221 KM</td><td>$8,000</td><td><span class="status-badge">解析完成</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 卡片 2 (長卡) -->
+    <div class="bento-card row-2 reveal">
+      <div>
+        <span class="card-icon">🚨</span>
+        <h3>監理站罰單助手</h3>
+        <p>告別逐台輸入查詢的低效時代。內建精靈式引導，自動代入車籍資料，多執行緒流程協助管理人員迅速完成 11 台車輛的違規漏查校對，大幅降低逾期罰緩風險。</p>
+      </div>
+      <div style="margin-top: 2rem; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 12px; font-size: 0.75rem; border: 1px solid var(--border-color);">
+        💡 提示：本月已引導完成 11 台車監理安全校驗，無未處理違規。
+      </div>
+    </div>
+
+    <!-- 卡片 3 -->
+    <div class="bento-card reveal">
+      <span class="card-icon">🕐</span>
+      <h3>輕量化歷史回溯</h3>
+      <p>無需手動建立多個年度分頁。後端以高彈性 JSON 架構儲存，前端一鍵切換月份，自動載入歷史軌跡與累計數據。</p>
+    </div>
+
+    <!-- 卡片 4 -->
+    <div class="bento-card reveal">
+      <span class="card-icon">📄</span>
+      <h3>原生公式報表輸出</h3>
+      <p>匯出的 Excel 報表並非死板數字，而是自動帶入 SUM、AVERAGE 等標準會計公式，方便財務同仁進行二次稽核與編輯。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 操作流程區 -->
+<section style="background: rgba(255,255,255,0.01);">
+  <div class="section-header">
+    <span class="sec-tag">Execution Workflow</span>
+    <h2 class="sec-title">高效透明的 4 步自動化排程</h2>
+  </div>
+  <div class="flow-container">
+    <div class="bento-card flow-node reveal">
+      <div class="flow-num">01</div>
+      <h3>資料匯出</h3>
+      <p>從會計系統拉出當月分類帳明細 xlsx。</p>
+    </div>
+    <div class="bento-card flow-node reveal">
+      <div class="flow-num">02</div>
+      <h3>智能解析</h3>
+      <p>上傳至系統，AI 自動完成多車牌拆分與過濾。</p>
+    </div>
+    <div class="bento-card flow-node reveal">
+      <div class="flow-num">03</div>
+      <h3>助手複核</h3>
+      <p>透過罰單助手及異常警告進行最終一鍵校正。</p>
+    </div>
+    <div class="bento-card reveal">
+      <div class="flow-num">04</div>
+      <h3>歸檔導出</h3>
+      <p>自動同步至歷史庫，導出標準規格財報。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 互動對比區 -->
+<section id="compare">
+  <div class="section-header" style="margin-left: auto; margin-right: auto; text-align: center;">
+    <span class="sec-tag">Comparison</span>
+    <h2 class="sec-title">變革對比：數字最具說服力</h2>
+  </div>
+  
+  <div class="toggle-container">
+    <button class="toggle-btn active" id="btnAfter">導入後 (AI 自動化)</button>
+    <button class="toggle-btn" id="btnBefore">導入前 (傳統人工)</button>
+  </div>
+
+  <div class="compare-view-box">
+    <ul class="compare-list" id="compareContent">
+      <!-- 由 JS 動態驅動切換 -->
+    </ul>
+  </div>
+</section>
+
+<!-- IMPACT METRICS -->
+<section class="metrics-section">
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-val">96%</div>
+      <div class="stat-label">月度工時縮減</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-val">11台</div>
+      <div class="stat-label">車輛集中控管</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-val">0元</div>
+      <div class="stat-label">硬體與授權成本</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-val">5Min</div>
+      <div class="stat-label">單月結算耗時</div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="cta-section">
+  <span class="sec-tag">Empower Financial Operations</span>
+  <h2 class="cta-title">將時間留給更有價值的財務決策</h2>
+  <p class="hero-sub" style="margin: 0 auto 2.5rem auto;">以 20 年資深財務專業沉澱為引導，結合現代自動化科技。長田實業專屬客製化方案，開創無紙化、零手動的資產維運新紀元。</p>
+  <a href="#about" class="cta-btn">長田實業 · 賴詩婷 · 2026 數位轉型提案</a>
+</section>
+
+<footer>
+  <span>© 2026 長田實業股份有限公司. All Rights Reserved.</span>
+  <span>設計風：SaaS Fluid Benton v2.5</span>
+</footer>
+
+<script>
+// 滾動動態偵測 (Intersection Observer)
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+// 數字動態滾動效果
+const counters = document.querySelectorAll('.counter');
+counters.forEach(counter => {
+  const target = +counter.getAttribute('data-target');
+  const updateCount = () => {
+    const count = +counter.innerText;
+    const speed = 200 / target;
+    if (count < target) {
+      counter.innerText = Math.ceil(count + 1);
+      setTimeout(updateCount, speed);
+    } else {
+      counter.innerText = target;
+    }
+  };
+  updateCount();
+});
+
+// 互動式檔案上傳區模擬效果
+const uploadZone = document.getElementById('uploadZone');
+const uploadStatus = document.getElementById('uploadStatus');
+uploadZone.addEventListener('click', () => {
+  uploadStatus.style.display = 'block';
+  uploadZone.style.borderColor = 'var(--accent)';
+});
+
+// 互動前後對比切換資料庫
+const dataCompare = {
+  before: [
+    { type: 'negative', text: '✕ 每月面對多份分類帳，肉眼逐行核對 11 台車輛項目' },
+    { type: 'negative', text: '✕ 人工於摘要欄位手動辨識起迄里程，高頻率發生誤鍵' },
+    { type: 'negative', text: '✕ 業務同仁個人私車油資需耗時人工交叉比對排除' },
+    { type: 'negative', text: '✕ 監理站違規罰單依賴人工逐台查閱，容易造成逾期漏看' }
+  ],
+  after: [
+    { type: 'positive', text: '✓ 直接匯入 Excel 分類帳，系統自動結構化拆分多台車輛資料' },
+    { type: 'positive', text: '✓ 演算法精準抓取摘要欄里程，達成數據零手動、零誤差轉載' },
+    { type: 'positive', text: '✓ 車牌格式化智能篩選機制，全自動精準分離並剔除非公務車油資' },
+    { type: 'positive', text: '✓ 內建引導精靈一鍵帶入車籍，5 分鐘即可完成全員防漏覆核' }
+  ]
+};
+
+const btnBefore = document.getElementById('btnBefore');
+const btnAfter = document.getElementById('btnAfter');
+const compareContent = document.getElementById('compareContent');
+
+function renderCompare(type) {
+  compareContent.innerHTML = dataCompare[type].map(item => `
+    <li>
+      <span class="${item.type === 'positive' ? 'icon-positive' : 'icon-negative'}">
+        ${item.type === 'positive' ? '✓' : '✕'}
+      </span>
+      <span style="color: ${item.type === 'positive' ? 'var(--text-main)' : 'var(--text-muted)'}">${item.text}</span>
+    </li>
+  `).join('');
+}
+
+btnBefore.addEventListener('click', () => {
+  btnBefore.classList.add('active');
+  btnAfter.classList.remove('active');
+  renderCompare('before');
+});
+
+btnAfter.addEventListener('click', () => {
+  btnAfter.classList.add('active');
+  btnBefore.classList.remove('active');
+  renderCompare('after');
+});
+
+// 初始化對比區
+renderCompare('after');
+</script>
+</body>
+</html><script>console.log('Viewer ready');</script></body></html>
